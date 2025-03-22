@@ -192,8 +192,8 @@ export async function generateStaticParams() {
     'contentos',
     'coti',
     'cream-2',
-    'cred'
-        
+    'cred',
+    'celestia'
   ];
 
   try {

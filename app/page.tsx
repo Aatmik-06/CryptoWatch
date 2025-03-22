@@ -8,7 +8,8 @@ import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import axios from "axios"
-import img1 from "./Assets/img.png"
+import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
+
 
 interface Coin {
   id: string;
@@ -138,21 +139,11 @@ export default function Home() {
 
   return (
     <main className="min-h-screen">
-      {/* Market Cap Summary */}
-      <div className="container-padding py-4 bg-card/50 backdrop-blur-sm border-b border-border">
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-2">
-          <h2 className="heading-3 text-center sm:text-left">Today's Cryptocurrency Prices by Market Cap</h2>
-          <div className="flex items-center gap-2">
-            <span className="body-text">The global crypto market cap is</span>
-            <span className="heading-3 text-primary">$2.76T</span>
-            <span className="body-text">a</span>
-            <span className="text-green-500">0.88%</span>
-            <span className="body-text">increase over the last day.</span>
-          </div>
-        </div>
-      </div>
 
       {/* Hero Section */}
+      <BackgroundBeamsWithCollision>
+    
+    
       <div className="relative overflow-hidden">
         <div className="hero-grid absolute inset-0 opacity-10"></div>
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 pt-8 sm:pt-20 pb-16 sm:pb-32">
@@ -174,7 +165,7 @@ export default function Home() {
               </div>
             </div>
             <div className="relative order-first lg:order-last">
-              <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full"></div>
+              <div className="absolute inset-0 bg-primary/20 blur-5xl rounded-full"></div>
               <img
                 src="https://imgproxy.gamma.app/resize/quality:80/resizing_type:fit/width:1200/https://cdn.gamma.app/a699hwuvbchbj8u/generated-images/tfCmVMsapZO1cHYFJyq0b.jpg"
                 alt="Cryptocurrency"
@@ -184,6 +175,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      </BackgroundBeamsWithCollision>
 
       {/* Search and Coins Section */}
       <section className="py-8 sm:py-16 px-2 sm:px-6 lg:px-8">
@@ -203,6 +195,20 @@ export default function Home() {
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
+           
+            <div className="container-padding py-4 bg-card/50 backdrop-blur-sm ">
+        <div className="flex flex-col sm:flex-row justify-start items-start gap-2">  
+        <div className="flex items-center gap-2">
+        <h2 className='heading-3 '>Today's Cryptocurrency Prices by Market Cap</h2>
+            <span className="body-text ">The global crypto market cap is</span>
+            <span className="heading-3 text-primary">$2.87T</span>
+            <span className="body-text ">a</span>
+            <span className="text-green-500">0.88%</span>
+            <span className="body-text ">increase over the last day.</span>
+          </div>
+        </div>
+      </div>
+  
           </div>
 
           {error && (

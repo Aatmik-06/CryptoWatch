@@ -24,6 +24,7 @@ export default function MarqueeBar() {
           total_volume: data.data.total_volume.usd,
           market_cap_change_percentage_24h: data.data.market_cap_change_percentage_24h_usd,
           active_cryptocurrencies: data.data.active_cryptocurrencies,
+          // bitcoin : data.data.
         });
       } catch (error) {
         console.error('Error fetching market data:', error);
@@ -33,7 +34,7 @@ export default function MarqueeBar() {
     };
 
     fetchMarketData();
-    const interval = setInterval(fetchMarketData, 60000); // Update every minute
+    const interval = setInterval(fetchMarketData, 60000); 
 
     return () => clearInterval(interval);
   }, []);
@@ -55,8 +56,8 @@ export default function MarqueeBar() {
 
   return (
     <div className="bg-background border-b border-border">
-      <div className="container mx-auto px-4 py-2">
-        <div className="flex flex-wrap justify-between items-center gap-4 text-xs sm:text-sm">
+      <div className="container flex flex-wrap justify-around items-center gap-4 mx-auto px-4 py-2">
+        <div className="flex flex-wrap justify-items-start gap-1 text-xs sm:text-sm">
           <div className="flex items-center gap-1">
             <span className="text-muted-foreground">Market Cap:</span>
             <span className="font-medium">${(marketData.total_market_cap / 1e12).toFixed(2)}T</span>
@@ -68,7 +69,7 @@ export default function MarqueeBar() {
               )}
               {Math.abs(marketData.market_cap_change_percentage_24h).toFixed(2)}%
             </span>
-          </div>
+          </div>  
           <div className="flex items-center gap-1">
             <span className="text-muted-foreground">24h Volume:</span>
             <span className="font-medium">${(marketData.total_volume / 1e9).toFixed(2)}B</span>
@@ -77,7 +78,16 @@ export default function MarqueeBar() {
             <span className="text-muted-foreground">Active Cryptocurrencies:</span>
             <span className="font-medium">{marketData.active_cryptocurrencies.toLocaleString()}</span>
           </div>
+         
         </div>
+
+        <div className="flex items-center gap-2">
+            <span className="body-text text-sm">The global crypto market cap is</span>
+            <span className="heading-4 text-primary">${(marketData.total_market_cap / 1e12).toFixed(2)}T</span>
+            <span className="body-text text-sm">a</span>
+            <span className="text-green-500">0.88%</span>
+            <span className="body-text text-sm">increase over the last day.</span>
+          </div>
       </div>
     </div>
   );
