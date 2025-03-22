@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 85% 3%;
+    --foreground: 210 40% 98%;
+    --card: 220 85% 4%;
+    --card-foreground: 210 40% 98%;
+    --popover: 220 85% 3%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 190 100% 50%;
+    --primary-foreground: 220 85% 3%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 190 100% 50%;
+    --accent-foreground: 220 85% 3%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 190 100% 50%;
+    --chart-1: 190 100% 50%;
+    --chart-2: 217 91% 60%;
+    --chart-3: 250 95% 65%;
+    --chart-4: 280 100% 65%;
+    --chart-5: 320 100% 60%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Layout Components */
+@layer components {
+  .container-padding {
+    @apply px-2 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-8 sm:py-16;
+  }
+
+  .card-padding {
+    @apply p-4 sm:p-6;
+  }
+
+  .grid-gap {
+    @apply gap-3 sm:gap-6;
+  }
+}
+
+/* Typography */
+@layer components {
+  .heading-1 {
+    @apply text-3xl sm:text-5xl md:text-7xl font-bold;
+  }
+
+  .heading-2 {
+    @apply text-2xl sm:text-4xl font-bold;
+  }
+
+  .heading-3 {
+    @apply text-lg sm:text-xl font-semibold;
+  }
+
+  .body-text {
+    @apply text-base sm:text-xl;
+  }
+
+  .small-text {
+    @apply text-xs sm:text-sm;
+  }
+}
+
+/* Interactive Elements */
+@layer components {
+  .glow {
+    box-shadow: 0 0 20px theme('colors.primary.DEFAULT'),
+                0 0 40px theme('colors.primary.DEFAULT');
+  }
+
+  .hover-glow {
+    @apply hover:glow transition-shadow duration-200;
+  }
+
+  .hover-scale {
+    @apply hover:scale-105 transition-transform duration-200;
+  }
+
+  .button-full {
+    @apply w-full sm:w-auto;
+  }
+}
+
+/* Hero Section */
+@layer components {
+  .hero-grid {
+    background-image: radial-gradient(circle at 1px 1px, theme('colors.primary.DEFAULT') 1px, transparent 0);
+    background-size: 40px 40px;
+    animation: gridAnimation 20s linear infinite;
+  }
+
+  .hero-image {
+    @apply relative rounded-2xl animate-float w-full h-auto;
+  }
+}
+
+/* Coin Cards */
+@layer components {
+  .coin-card {
+    @apply card-padding hover-scale cursor-pointer hover-glow;
+  }
+
+  .coin-image {
+    @apply w-8 h-8 sm:w-12 sm:h-12;
+  }
+
+  .coin-info {
+    @apply space-y-1 sm:space-y-2;
+  }
+}
+
+/* News Cards */
+@layer components {
+  .news-card {
+    @apply card-padding hover-glow;
+  }
+}
+
+/* Footer */
+@layer components {
+  .footer-link {
+    @apply text-muted-foreground hover:text-primary transition-colors;
+  }
+}
+
+/* Animations */
+@keyframes gridAnimation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
