@@ -141,46 +141,58 @@ export default function Home() {
     <main className="min-h-screen">
 
       {/* Hero Section */}
-      <BackgroundBeamsWithCollision>
-    
-    
-      <div className="relative overflow-hidden">
-        <div className="hero-grid absolute inset-0 opacity-10"></div>
-        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 pt-8 sm:pt-20 pb-16 sm:pb-32">
-          <div className="grid lg:grid-cols-2 gap-6 sm:gap-12 items-center">
-            <div className="space-y-4 sm:space-y-8">
-              <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
-                The Future of Digital Assets
-              </h1>
-              <p className="text-base sm:text-xl text-muted-foreground">
-                Track real-time cryptocurrency prices, market trends, and insights on the most secure and advanced crypto platform.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-                <Button size="default" className="glow w-full sm:w-auto">
-                  Get Started <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
-                </Button>
-                <Button size="default" variant="secondary" className="w-full sm:w-auto">
-                  Learn More
-                </Button>
-              </div>
-            </div>
-            <div className="relative order-first lg:order-last">
-              <div className="absolute inset-0 bg-primary/20 blur-5xl rounded-full"></div>
-              <img
-                src="https://imgproxy.gamma.app/resize/quality:80/resizing_type:fit/width:1200/https://cdn.gamma.app/a699hwuvbchbj8u/generated-images/tfCmVMsapZO1cHYFJyq0b.jpg"
-                alt="Cryptocurrency"
-                className="relative rounded-2xl animate-float w-full h-auto"
-              />
-            </div>
+      <div className="bg-background border-b border-border" >
+      <div className="container-padding py-0 bg-card/50 backdrop-blur-sm ">
+        <div className="flex flex-col sm:flex-row justify-center items-center gap-2">  
+        <div className="flex items-center gap-2">
+            <span className="body-text text-xs" id='top-2-fonts'>The global crypto market cap is</span>
+            <span className="heading-6 text-primary" id='top-2-fonts'>$2.87T</span>
+            <span className="body-text text-xs" id='top-2-fonts'>a</span>
+            <span className="text-green-500 text-xs" id='top-2-fonts'>0.88%</span>
+            <span className="body-text text-xs" id='top-2-fonts'>increase over the last day.</span>
           </div>
         </div>
       </div>
-      </BackgroundBeamsWithCollision>
+      </div>
+    <div className="relative overflow-hidden">
+  <div className="hero-grid absolute inset-0 opacity-10"></div>
+  <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 pt-8 sm:pt-20 pb-16 sm:pb-32">
+    <div id='hero-div' className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-12 items-center">
+    <div className="space-y-4 sm:space-y-8 px-4 sm:px-6">
+  <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
+    The Future of Digital Assets
+  </h1>
+  <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-muted-foreground">
+    Track real-time cryptocurrency prices, market trends, and insights on the most secure and advanced crypto platform.
+  </p>
+  <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+    <Button size="default" className="glow w-full sm:w-auto">
+      Get Started <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
+    </Button>
+    <Button size="default" variant="secondary" className="w-full sm:w-auto">
+      Learn More
+    </Button>
+  </div>
+</div>
+
+      <div className="relative order-first sm:order-last" id="hero-img">
+        <div className="absolute inset-0 bg-primary/20 blur-xl sm:w-3/4 md:w-full h-auto object-cover"></div>
+        <img id="hero-img"
+          src="https://imgproxy.gamma.app/resize/quality:80/resizing_type:fit/width:1200/https://cdn.gamma.app/a699hwuvbchbj8u/generated-images/tfCmVMsapZO1cHYFJyq0b.jpg"
+          alt="Cryptocurrency"
+          className="relative rounded-2xl animate-float w-full sm:w-3/4 md:w-full h-auto object-cover shadow-lg sm:shadow-xl"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+    
 
       {/* Search and Coins Section */}
       <section className="py-8 sm:py-16 px-2 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col items-center mb-6 sm:mb-12">
+          <div className="flex flex-col items-center mb-6 sm:mb-3">
             <h2 className="text-2xl sm:text-4xl font-bold text-primary mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
               <TrendingUp className="w-6 h-6 sm:w-10 sm:h-10" />
               Live Market Data
@@ -196,7 +208,7 @@ export default function Home() {
               />
             </div>
            
-            <div className="container-padding py-4 bg-card/50 backdrop-blur-sm ">
+            <div className="container-padding py-4 bg-card/50 backdrop-blur-sm  mt-8">
         <div className="flex flex-col sm:flex-row justify-start items-start gap-2">  
         <div className="flex items-center gap-2">
         <h2 className='heading-3 '>Today's Cryptocurrency Prices by Market Cap</h2>

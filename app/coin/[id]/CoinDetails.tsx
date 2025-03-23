@@ -309,8 +309,8 @@ export default function CoinDetails({ id }: { id: string }) {
                   if (active && payload && payload.length) {
                     return (
                       <div className="bg-background border border-border rounded-lg p-2 shadow-lg">
-                        <p className="text-sm text-muted-foreground">{payload[0].payload.date}</p>
-                        <p className="text-sm font-bold">${payload[0].value.toLocaleString()}</p>
+                        <p className="text-sm text-muted-foreground">{payload[0]?.payload?.date}</p>
+                        <p className="text-sm font-bold">${payload[0]?.value?.toLocaleString()}</p>
                       </div>
                     );
                   }

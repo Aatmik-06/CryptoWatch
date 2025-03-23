@@ -167,3 +167,79 @@
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+
+@media screen and (max-width:1290px)
+{
+  #top-bar{
+ 
+  }
+#top-bar-1{
+ /* display: none; */
+}
+#top-bar2{
+  display: none;
+}
+}
+
+@media screen and (max-width:1024px)
+{
+
+ #hero-img{
+  height: auto;
+  width: auto;
+ }
+}
+@media screen and (max-width:768px)
+{
+ 
+
+}
+@media screen and (max-width:640px)
+{
+  #hero-div{
+    display:flex;
+    flex-direction: row;
+  }
+  #hero-img{
+    /* height: auto; */
+    /* width: 250px; */
+   }
+}
+@media screen and (max-width:550px)
+{
+  #hero-div{
+    display:flex;
+    flex-direction: column;
+  }
+  #hero-img{
+    height: 350px; 
+    width: 400px;
+   }
+   #hours-vloume-div{
+    display: none;
+   }
+   #top-div{
+    font-size: 10px;
+   }
+   #top-bar-1{
+    padding: 1px;
+    margin-top: 2px;
+   }
+   #top-2-fonts{
+    font-size: 10px;
+   }
+}
+@media screen and (max-width:425px)
+{
+  #hero-img{
+    height: 300px; 
+    width: 300px;
+   }
+
+}
+
+
+
+
+
+

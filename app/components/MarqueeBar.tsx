@@ -55,10 +55,10 @@ export default function MarqueeBar() {
   }
 
   return (
-    <div className="bg-background border-b border-border">
-      <div className="container flex flex-wrap justify-around items-center gap-4 mx-auto px-4 py-2">
+    <div className="bg-background border-b border-border" id="top-bar">
+      <div className="container flex justify-around items-center gap-0 mx-auto px-4 py-2" id='top-bar-1'>
         <div className="flex flex-wrap justify-items-start gap-1 text-xs sm:text-sm">
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1" id='top-div'>
             <span className="text-muted-foreground">Market Cap:</span>
             <span className="font-medium">${(marketData.total_market_cap / 1e12).toFixed(2)}T</span>
             <span className={`flex items-center gap-0.5 ${marketData.market_cap_change_percentage_24h >= 0 ? 'text-green-500' : 'text-red-500'}`}>
@@ -70,18 +70,18 @@ export default function MarqueeBar() {
               {Math.abs(marketData.market_cap_change_percentage_24h).toFixed(2)}%
             </span>
           </div>  
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1" id='hours-vloume-div'>
             <span className="text-muted-foreground">24h Volume:</span>
             <span className="font-medium">${(marketData.total_volume / 1e9).toFixed(2)}B</span>
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1" id='top-div'>
             <span className="text-muted-foreground">Active Cryptocurrencies:</span>
             <span className="font-medium">{marketData.active_cryptocurrencies.toLocaleString()}</span>
           </div>
          
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2" id='top-bar2' >
             <span className="body-text text-sm">The global crypto market cap is</span>
             <span className="heading-4 text-primary">${(marketData.total_market_cap / 1e12).toFixed(2)}T</span>
             <span className="body-text text-sm">a</span>
