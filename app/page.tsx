@@ -9,9 +9,8 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import axios from "axios"
 import { MarqueeAnimation } from "@/components/ui/marquee-effect";
-import Marquee from "@/components/ui/marquee";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
-
+import Marquee from "react-fast-marquee";
 
 interface Coin {
   id: string;
@@ -149,9 +148,9 @@ export default function Home() {
      
 
       <div className="flex flex-col gap-4">
-      <MarqueeAnimation
+      <Marquee
         direction="left"
-        baseVelocity={-2}
+        speed={120}
         className="bg-black-500 text-white py-2"
       >
         <div className="flex gap-8">
@@ -192,8 +191,7 @@ export default function Home() {
           </div>
         ))}
       </div>
-      </MarqueeAnimation>
-     
+      </Marquee>
     </div>
 
   
