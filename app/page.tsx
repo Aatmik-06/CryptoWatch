@@ -8,6 +8,8 @@ import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
 import axios from "axios"
+import { MarqueeAnimation } from "@/components/ui/marquee-effect";
+import Marquee from "@/components/ui/marquee";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 
 
@@ -137,23 +139,67 @@ export default function Home() {
     coin.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+
+
+
   return (
     <main className="min-h-screen">
 
       {/* Hero Section */}
-      <div className="bg-background border-b border-border" >
-      <div className="container-padding py-0 bg-card/50 backdrop-blur-sm ">
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-2">  
-        <div className="flex items-center gap-2">
-            <span className="body-text text-xs" id='top-2-fonts'>The global crypto market cap is</span>
-            <span className="heading-6 text-primary" id='top-2-fonts'>$2.87T</span>
-            <span className="body-text text-xs" id='top-2-fonts'>a</span>
-            <span className="text-green-500 text-xs" id='top-2-fonts'>0.88%</span>
-            <span className="body-text text-xs" id='top-2-fonts'>increase over the last day.</span>
+     
+
+      <div className="flex flex-col gap-4">
+      <MarqueeAnimation
+        direction="left"
+        baseVelocity={-2}
+        className="bg-black-500 text-white py-2"
+      >
+        <div className="flex gap-8">
+        {coins.slice(0, 8).map((coin) => (
+          <div key={coin.id} className="flex items-center gap-1">
+            <img
+              src={coin.image}
+              alt={coin.name}
+              className="w-6 h-6 sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-10 lg:h-10 rounded-full"
+
+            // className="w-6 h-6 sm:w-8 sm:h-8 rounded-full"
+            />
+            <div className="flex items-center gap-0">
+
+              <span className="text-sm sm:text-base font-medium gap-0 sm:block hidden">
+                {coin.name}
+              </span>
+              <span className="text-xs font-medium gap-0 block sm:hidden">
+                {coin.name}
+              </span>
+              <div className="flex items-center gap-0 ml-1 mr-6">
+                {coin.price_change_percentage_24h > 0 ? (
+                  <ArrowRight className="w-4 h-4 text-green-500 rotate-45" />
+                ) : (
+                  <ArrowRight className="w-4 h-4 text-red-500 rotate-[135deg]" />
+                )}
+                <span
+                  className={`text-sm ${
+                    coin.price_change_percentage_24h > 0
+                      ? 'text-green-500'
+                      : 'text-red-500'
+                  }`}
+                >
+                  {coin.price_change_percentage_24h.toFixed(2)}%
+                </span>
+              </div>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
-      </div>
+      </MarqueeAnimation>
+     
+    </div>
+
+  
+
+   
+
     <div className="relative overflow-hidden">
   <div className="hero-grid absolute inset-0 opacity-10"></div>
   <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 pt-8 sm:pt-20 pb-16 sm:pb-32">

@@ -167,7 +167,9 @@
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
-
+#topnav{
+  display: none;
+}
 @media screen and (max-width:1290px)
 {
   #top-bar{
@@ -188,10 +190,13 @@
   height: auto;
   width: auto;
  }
+ #topnav{
+  display: block;
+}
 }
 @media screen and (max-width:768px)
 {
- 
+
 
 }
 @media screen and (max-width:640px)
@@ -206,7 +211,11 @@
    }
 }
 @media screen and (max-width:550px)
+
 {
+  #topnav{
+    display: block;
+  }
   #hero-div{
     display:flex;
     flex-direction: column;
