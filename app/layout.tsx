@@ -1,8 +1,11 @@
 import './globals.css';
+import "@radix-ui/themes/styles.css";
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from '@/components/theme-provider';
 import MarqueeBar from './components/MarqueeBar';
+import { NavBarDemo } from './components/Navbar';
+
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,7 +28,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <MarqueeBar />
+          
+          <MarqueeBar/>
+          <NavBarDemo/>
+   
           {children}
         </ThemeProvider>
       </body>

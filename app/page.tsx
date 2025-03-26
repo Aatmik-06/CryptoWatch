@@ -256,11 +256,11 @@ export default function Home() {
         <div className="flex flex-col sm:flex-row justify-start items-start gap-2">  
         <div className="flex items-center gap-2">
         <h2 className='heading-3 '>Today's Cryptocurrency Prices by Market Cap</h2>
-            <span className="body-text ">The global crypto market cap is</span>
+            {/* <span className="body-text ">The global crypto market cap is</span>
             <span className="heading-3 text-primary">$2.87T</span>
             <span className="body-text ">a</span>
             <span className="text-green-500">0.88%</span>
-            <span className="body-text ">increase over the last day.</span>
+            <span className="body-text ">increase over the last day.</span> */}
           </div>
         </div>
       </div>
@@ -273,7 +273,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
             {loading
-              ? Array(90)
+              ? Array(9)
                   .fill(0)
                   .map((_, i) => (
                     <div key={i} className="p-2 sm:p-4">
