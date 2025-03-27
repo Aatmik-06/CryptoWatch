@@ -41,7 +41,7 @@ export default function MarqueeBar() {
 
   if (loading || !marketData) {
     return (
-      <div className="bg-background border-b border-border">
+      <div className="bg-background border-b border-border" id="marqueeb">
         <div className="container mx-auto px-4 py-2">
           <div className="animate-pulse flex ">
           <div className="h-4 bg-muted rounded w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5 xl:w-1/6"></div>
@@ -54,9 +54,9 @@ export default function MarqueeBar() {
   }
 
   return (
-    <div className="bg-background border-b border-border" id="top-bar">
+    <div className="bg-background " id="marqueeb">
       <div className="container flex  gap-5 mx-auto px-4 py-2" id='top-bar-1'>
-        <div className="flex flex-wrap justify-items-start gap-2 text-xs sm:text-sm">
+        <div className="flex flex-wrap justify-items-end gap-2 text-xs sm:text-sm">
           <div className="flex items-center gap-1" id='top-div'>
             <span className="text-muted-foreground">Market Cap:</span>
             <span className="font-medium text-primary">${(marketData.total_market_cap / 1e12).toFixed(2)}T</span>

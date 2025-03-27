@@ -181,7 +181,7 @@ export default function CoinDetails({ id }: { id: string }) {
     };
 
     fetchCoinData();
-    const interval = setInterval(fetchCoinData, 30000);
+    const interval = setInterval(fetchCoinData, 1000000);
 
     return () => {
       isMounted = false;
