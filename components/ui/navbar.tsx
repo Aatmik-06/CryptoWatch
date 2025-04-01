@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { motion, MotionConfig } from 'framer-motion';
 import * as React from 'react';
 import '../../app/globals.css';
+import img from '../../app/logo.jpeg'
 
 export type IMenu = {
   id: number;
@@ -27,12 +28,12 @@ const Menu = ({ list }: MenuProps) => {
   return (
     <MotionConfig transition={{ bounce: 0, type: 'tween' }}>
       <nav className="relative bg-background border-b border-border">
-      <div className=" lg:hidden flex justify-between items-center px-2 py-2">
-          <h1 id="nav-h1">CryptoWatch</h1>
+      <div className=" lg:hidden flex flex-row justify-between items-center px-2 py-2">
+        <h1 id="nav-h1" className='flex flex-row'> <img className='mr-5' src={img.src} alt="" style={{height:"35px" }}/> <span className='mt-1'> CryptoWatch </span> </h1>
 
           {/* Hamburger button for mobile */}
           <button
-            className="lg:hidden text-2xl"
+            className="lg:hidden text-2xl mr-3"
             onClick={toggleSidebar}
           >
             ☰
@@ -41,7 +42,7 @@ const Menu = ({ list }: MenuProps) => {
 
         {/* Sidebar for mobile */}
         <div 
-          className={`lg:hidden fixed inset-0 bg-black bg-opacity-50 transition-all ${
+          className={`lg:hidden fixed inset-0 bg-black-500 bg-opacity-10 transition-all ${
             isSidebarOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
           }`}
           onClick={toggleSidebar}
@@ -53,11 +54,13 @@ const Menu = ({ list }: MenuProps) => {
           } z-50`} 
         >
           <ul className="flex flex-col items-start p-4">
+          <h1 id="nav-h1" className='flex flex-row mb-2'> <img className='mr-5' src={img.src} alt="" style={{height:"35px" }}/> <span className='mt-1'> CryptoWatch </span> </h1>
+
             {list?.map((item) => {
               return (
-                <li key={item.id} className="relative">
+                <li key={item.id} className="relative ml-9">
                   <Link
-                    className="relative flex items-center justify-center rounded px-8 py-3 transition-all hover:bg-foreground/10"
+                    className="relative flex items-center justify-center rounded px-10 py-3 transition-all hover:bg-foreground/10"
                     href={item?.url}
                   >
                     {item?.title}
@@ -98,8 +101,8 @@ const Menu = ({ list }: MenuProps) => {
 
         {/* Desktop menu */}
         <ul className="hidden lg:flex items-center">
-          <h1 id="nav-h1">CryptoWatch</h1>
-          {list?.map((item) => {
+        <img src={img.src} alt="" style={{height:"35px" ,marginLeft:"20px"}}/> <h1 id="nav-h1">  CryptoWatch</h1>
+          {list?.map((item ) => {
             return (
               <li key={item.id} className="relative">
                 <Link

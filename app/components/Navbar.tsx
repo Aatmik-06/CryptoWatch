@@ -25,25 +25,25 @@ const menus = [
   {
     id: 2,
     title: 'Coins',
-    url: '/products',
+    url: '/',
     dropdown: false
   },
   {
     id: 3,
     title: "NFT's",
-    url: '/services',
+    url: '/',
     dropdown: false
   },
   {
     id: 4,
     title: 'About Us',
-    url: '/about',
+    url: '/',
     dropdown: false,
   },
   {
     id: 5,
     title: 'Contact',
-    url: '/contact',
+    url: '/',
     dropdown: false,
   },
 ];

@@ -15,7 +15,7 @@ import {
 import { Card } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import MarqueeBar from '@/app/components/MarqueeBar';
 
 interface CoinDetails {
   id: string;
@@ -207,6 +207,7 @@ export default function CoinDetails({ id }: { id: string }) {
 
   return (
     <div className="container mx-auto px-2 sm:px-4 py-2 sm:py-4">
+     
       <Link href="/" className="inline-flex items-center text-primary hover:underline mb-2 sm:mb-4 text-xs sm:text-sm">
         <ArrowLeft className="mr-1 h-3 w-3 sm:h-4 sm:w-4" />
         Back to Home

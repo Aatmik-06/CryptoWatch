@@ -43,7 +43,27 @@ interface MarketData {
   total_volume: number;
   market_cap_change_percentage_24h: number;
   active_cryptocurrencies: number;
+
+
+  total_market_cap_usd: number;
+  total_market_cap_btc: number;
+  total_market_cap_eth: number;
+  total_volume_usd: number;
+  total_volume_btc: number;
+  total_volume_eth: number;
+  market_cap_percentage_btc: number;
+  market_cap_percentage_eth: number;
+
+
 }
+// interface DefiData {
+//   total_value_locked: number;
+//   defi_volume_24h: number;
+//   defi_market_cap: number;
+//   defi_dominance: number;
+//   top_coin_name:string;
+// }
+
 
 const cryptoNews: NewsItem[] = [
   {
@@ -98,6 +118,7 @@ export default function Home() {
   const [coins, setCoins] = useState<Coin[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [marketData, setMarketData] = useState<MarketData | null>(null);
+  // const [defiData, setDefiData] = useState<DefiData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -155,6 +176,28 @@ export default function Home() {
     };
   }, []);
 
+  // const fetchDefiData = async () => {
+  //   try {
+  //     const response = await fetch("https://api.coingecko.com/api/v3/global/decentralized_finance_defi");
+  //     const data = await response.json();
+  //     setDefiData({
+  //       defi_market_cap: data.data.defi_market_cap,
+  //       defi_volume_24h: data.data.trading_volume_24h,
+  //       defi_dominance: data.data.defi_dominance,
+  //       top_coin_name: data.data.top_coin_name,
+  //       total_value_locked: data.data.total_value_locked || 0 // Adding missing required property
+  //     });
+  //   } catch (error) {
+  //     console.error("Error fetching DeFi data:", error);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchDefiData();
+  //   const interval = setInterval(fetchDefiData, 60000);
+  //   return () => clearInterval(interval);
+  // }, []);
+
   const filteredCoins = coins.filter((coin) =>
     coin.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -170,7 +213,14 @@ export default function Home() {
           market_cap_change_percentage_24h:
             data.data.market_cap_change_percentage_24h_usd,
           active_cryptocurrencies: data.data.active_cryptocurrencies,
-          // bitcoin : data.data.
+          total_market_cap_usd: data.data.total_market_cap.usd,
+          total_market_cap_btc: data.data.total_market_cap.btc,
+          total_market_cap_eth: data.data.total_market_cap.eth,
+          total_volume_usd: data.data.total_volume.usd,
+          total_volume_btc: data.data.total_volume.btc,
+          total_volume_eth: data.data.total_volume.eth,
+          market_cap_percentage_btc: data.data.market_cap_percentage.btc,
+          market_cap_percentage_eth: data.data.market_cap_percentage.eth,
         });
       } catch (error) {
         console.error("Error fetching market data:", error);
@@ -246,7 +296,7 @@ export default function Home() {
       <div className="relative overflow-hidden">
         <div className="hero-grid absolute inset-0 opacity-10"></div>
         
-        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 pt-8 sm:pt-20 pb-16 sm:pb-32">
+        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 pt-8 sm:pt-20 pb-16 sm:pb-10">
           <div
             id="hero-div"
             className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-12"
@@ -261,28 +311,16 @@ export default function Home() {
     
             <div id="marketdesktopdiv" className="flex flex-wrap justify-items-end gap-4 text-xs sm:text-sm p-4 rounded-lg shadow-lg"> 
   {/* Market Cap Section */}
+ 
+
   <NeonGradientCard>
     {marketData ? (
-      <div className="flex items-center gap-1 p-3 w-full sm:w-24 md:w-32 lg:w-40 xl:w-60">
+      <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
         <span className="text-muted-foreground text-gray-300 text-xs sm:text-sm">
-          Market Cap:
+          Market Cap (INR):
         </span>
-        <span className="font-medium text-primary text-xs sm:text-sm">
-          ${(marketData.total_market_cap / 1e12).toFixed(2)}T
-        </span>
-        <span
-          className={`flex items-center gap-1 ${
-            marketData.market_cap_change_percentage_24h >= 0
-              ? "text-green-500"
-              : "text-red-500"
-          }`}
-        >
-          {marketData.market_cap_change_percentage_24h >= 0 ? (
-            <ArrowUpRight className="h-3 w-3" />
-          ) : (
-            <ArrowDownRight className="h-3 w-3" />
-          )}
-          {Math.abs(marketData.market_cap_change_percentage_24h).toFixed(2)}%
+        <span className="font-medium text-xs sm:text-sm text-white">
+          ₹{((marketData.total_market_cap_usd * 82.75) / 1e12).toFixed(2)}T
         </span>
       </div>
     ) : (
@@ -295,7 +333,67 @@ export default function Home() {
     )}
   </NeonGradientCard>
 
-  {/* Active Cryptocurrencies Section */}
+  <NeonGradientCard>
+    {marketData ? (
+      <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
+        <span className="text-muted-foreground text-gray-300 text-xs sm:text-sm">
+          Total Volume (USD):
+        </span>
+        <span className="font-medium text-xs sm:text-sm text-white">
+          ${((marketData.total_volume_usd / 1e9).toFixed(2))}B
+        </span>
+      </div>
+    ) : (
+      <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
+        <div className="w-16 h-4 bg-gray-600 animate-pulse rounded-md" />
+        <div className="flex items-center gap-1">
+          <div className="w-12 h-6 bg-gray-600 animate-pulse rounded-md" />
+        </div>
+      </div>
+    )}
+  </NeonGradientCard>
+
+  <NeonGradientCard>
+    {marketData ? (
+      <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
+        <span className="text-muted-foreground text-gray-300 text-xs sm:text-sm">
+          Market Cap Percentage (BTC):
+        </span>
+        <span className="font-medium text-xs sm:text-sm text-white">
+          {marketData.market_cap_percentage_btc.toFixed(2)}%
+        </span>
+      </div>
+    ) : (
+      <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
+        <div className="w-16 h-4 bg-gray-600 animate-pulse rounded-md" />
+        <div className="flex items-center gap-1">
+          <div className="w-12 h-6 bg-gray-600 animate-pulse rounded-md" />
+        </div>
+      </div>
+    )}
+  </NeonGradientCard>
+
+  <NeonGradientCard>
+    {marketData ? (
+      <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
+        <span className="text-muted-foreground text-gray-300 text-xs sm:text-sm">
+          Market Cap Percentage (ETH):
+        </span>
+        <span className="font-medium text-xs sm:text-sm text-white">
+          {marketData.market_cap_percentage_eth.toFixed(2)}%
+        </span>
+      </div>
+    ) : (
+      <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
+        <div className="w-16 h-4 bg-gray-600 animate-pulse rounded-md" />
+        <div className="flex items-center gap-1">
+          <div className="w-12 h-6 bg-gray-600 animate-pulse rounded-md" />
+        </div>
+      </div>
+    )}
+  </NeonGradientCard>
+
+  {/* Active Cryptocurrencies Section
   <NeonGradientCard>
     {marketData ? (
       <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
@@ -314,14 +412,8 @@ export default function Home() {
         </div>
       </div>
     )}
-  </NeonGradientCard>
+  </NeonGradientCard> */}
 </div>
-
-
-
-
-
-
 
               <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
                 The Future of Digital Assets
@@ -542,7 +634,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-secondary/30 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-3 gap-20">
             <div>
               <h3 className="text-xl font-bold text-primary mb-4">
                 CryptoWatch
@@ -609,35 +701,7 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-            <div>
-              <h4 className="font-semibold mb-4">Legal</h4>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    href="#"
-                    className="text-muted-foreground hover:text-primary"
-                  >
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-muted-foreground hover:text-primary"
-                  >
-                    Terms of Service
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-muted-foreground hover:text-primary"
-                  >
-                    Cookie Policy
-                  </a>
-                </li>
-              </ul>
-            </div>
+          
           </div>
           <div className="border-t border-secondary mt-8 pt-8 text-center text-muted-foreground">
             <p>&copy; 2025 CryptoWatch. All rights reserved.</p>
