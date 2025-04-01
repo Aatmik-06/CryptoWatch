@@ -28,15 +28,17 @@ const Menu = ({ list }: MenuProps) => {
   return (
     <MotionConfig transition={{ bounce: 0, type: 'tween' }}>
       <nav className="relative bg-background border-b border-border">
-      <div className=" lg:hidden flex flex-row justify-between items-center px-2 py-2">
-        <h1 id="nav-h1" className='flex flex-row'> <img className='mr-5' src={img.src} alt="" style={{height:"35px" }}/> <span className='mt-1'> CryptoWatch </span> </h1>
+      <div className=" lg:hidden flex flex-row justify-between items-center px-0 py-2">
+        <h1 id="nav-h1" className='flex flex-row'> <img className='mr-1' src={img.src} alt="" style={{height:"35px" }}/> <span className='mt-1'> CryptoWatch </span> </h1>
 
           {/* Hamburger button for mobile */}
           <button
-            className="lg:hidden text-2xl mr-3"
+            className="lg:hidden text-2xl mr-6"
             onClick={toggleSidebar}
           >
+            
             ☰
+            
           </button>
         </div>
 
@@ -54,7 +56,7 @@ const Menu = ({ list }: MenuProps) => {
           } z-50`} 
         >
           <ul className="flex flex-col items-start p-4">
-          <h1 id="nav-h1" className='flex flex-row mb-2'> <img className='mr-5' src={img.src} alt="" style={{height:"35px" }}/> <span className='mt-1'> CryptoWatch </span> </h1>
+          <h1 id="nav-h1" className='flex flex-row mb-2'> <img className='mr-2' src={img.src} alt="" style={{height:"35px" }}/> <span className='mt-1'> CryptoWatch </span> </h1>
 
             {list?.map((item) => {
               return (
