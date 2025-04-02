@@ -36,7 +36,7 @@ const Menu = ({ list }: MenuProps) => {
             className="lg:hidden text-2xl mr-6"
             onClick={toggleSidebar}
           >
-            
+              
             ☰
             
           </button>

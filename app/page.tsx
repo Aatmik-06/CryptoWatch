@@ -11,11 +11,10 @@ import axios from "axios";
 import { MarqueeAnimation } from "@/components/ui/marquee-effect";
 import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import Marquee from "react-fast-marquee";
-import { ArrowUpRight, ArrowDownRight } from 'lucide-react';
+import { ArrowUpRight, ArrowDownRight } from "lucide-react";
 import { Meteors } from "@/components/ui/meteors";
-import { NeonGradientCard } from "@/components/ui/neon-gradient-card"
-import MarqueeBar from './components/MarqueeBar';
-
+import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
+import MarqueeBar from "./components/MarqueeBar";
 
 interface Coin {
   id: string;
@@ -44,7 +43,6 @@ interface MarketData {
   market_cap_change_percentage_24h: number;
   active_cryptocurrencies: number;
 
-
   total_market_cap_usd: number;
   total_market_cap_btc: number;
   total_market_cap_eth: number;
@@ -53,8 +51,6 @@ interface MarketData {
   total_volume_eth: number;
   market_cap_percentage_btc: number;
   market_cap_percentage_eth: number;
-
-
 }
 // interface DefiData {
 //   total_value_locked: number;
@@ -63,7 +59,6 @@ interface MarketData {
 //   defi_dominance: number;
 //   top_coin_name:string;
 // }
-
 
 const cryptoNews: NewsItem[] = [
   {
@@ -284,116 +279,109 @@ export default function Home() {
           </div>
         </Marquee>
       </div>
-<MarqueeBar/>
-    
-
-
-
-
-
-
+      <MarqueeBar />
 
       <div className="relative overflow-hidden">
         <div className="hero-grid absolute inset-0 opacity-10"></div>
-        
+
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 pt-8 sm:pt-20 pb-16 sm:pb-10">
           <div
             id="hero-div"
             className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-12"
           >
-            
             <div className="space-y-4 sm:space-y-8 px-4 sm:px-6">
+              <div
+                id="marketdesktopdiv"
+                className="flex flex-wrap justify-items-end gap-4 text-xs sm:text-sm p-4 rounded-lg shadow-lg"
+              >
+                {/* Market Cap Section */}
 
-           
-     
+                <NeonGradientCard>
+                  {marketData ? (
+                    <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
+                      <span className="text-muted-foreground text-gray-300 text-xs sm:text-sm">
+                        Market Cap (INR):
+                      </span>
+                      <span className="font-medium text-xs sm:text-sm text-white">
+                        ₹
+                        {(
+                          (marketData.total_market_cap_usd * 82.75) /
+                          1e12
+                        ).toFixed(2)}
+                        T
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
+                      <div className="w-16 h-4 bg-gray-600 animate-pulse rounded-md" />
+                      <div className="flex items-center gap-1">
+                        <div className="w-12 h-6 bg-gray-600 animate-pulse rounded-md" />
+                      </div>
+                    </div>
+                  )}
+                </NeonGradientCard>
 
+                <NeonGradientCard>
+                  {marketData ? (
+                    <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
+                      <span className="text-muted-foreground text-gray-300 text-xs sm:text-sm">
+                        Total Volume (USD):
+                      </span>
+                      <span className="font-medium text-xs sm:text-sm text-white">
+                        ${(marketData.total_volume_usd / 1e9).toFixed(2)}B
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
+                      <div className="w-16 h-4 bg-gray-600 animate-pulse rounded-md" />
+                      <div className="flex items-center gap-1">
+                        <div className="w-12 h-6 bg-gray-600 animate-pulse rounded-md" />
+                      </div>
+                    </div>
+                  )}
+                </NeonGradientCard>
 
-    
-            <div id="marketdesktopdiv" className="flex flex-wrap justify-items-end gap-4 text-xs sm:text-sm p-4 rounded-lg shadow-lg"> 
-  {/* Market Cap Section */}
- 
+                <NeonGradientCard>
+                  {marketData ? (
+                    <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
+                      <span className="text-muted-foreground text-gray-300 text-xs sm:text-sm">
+                        Market Cap Percentage (BTC):
+                      </span>
+                      <span className="font-medium text-xs sm:text-sm text-white">
+                        {marketData.market_cap_percentage_btc.toFixed(2)}%
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
+                      <div className="w-16 h-4 bg-gray-600 animate-pulse rounded-md" />
+                      <div className="flex items-center gap-1">
+                        <div className="w-12 h-6 bg-gray-600 animate-pulse rounded-md" />
+                      </div>
+                    </div>
+                  )}
+                </NeonGradientCard>
 
-  <NeonGradientCard>
-    {marketData ? (
-      <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
-        <span className="text-muted-foreground text-gray-300 text-xs sm:text-sm">
-          Market Cap (INR):
-        </span>
-        <span className="font-medium text-xs sm:text-sm text-white">
-          ₹{((marketData.total_market_cap_usd * 82.75) / 1e12).toFixed(2)}T
-        </span>
-      </div>
-    ) : (
-      <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
-        <div className="w-16 h-4 bg-gray-600 animate-pulse rounded-md" />
-        <div className="flex items-center gap-1">
-          <div className="w-12 h-6 bg-gray-600 animate-pulse rounded-md" />
-        </div>
-      </div>
-    )}
-  </NeonGradientCard>
+                <NeonGradientCard>
+                  {marketData ? (
+                    <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
+                      <span className="text-muted-foreground text-gray-300 text-xs sm:text-sm">
+                        Market Cap Percentage (ETH):
+                      </span>
+                      <span className="font-medium text-xs sm:text-sm text-white">
+                        {marketData.market_cap_percentage_eth.toFixed(2)}%
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
+                      <div className="w-16 h-4 bg-gray-600 animate-pulse rounded-md" />
+                      <div className="flex items-center gap-1">
+                        <div className="w-12 h-6 bg-gray-600 animate-pulse rounded-md" />
+                      </div>
+                    </div>
+                  )}
+                </NeonGradientCard>
 
-  <NeonGradientCard>
-    {marketData ? (
-      <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
-        <span className="text-muted-foreground text-gray-300 text-xs sm:text-sm">
-          Total Volume (USD):
-        </span>
-        <span className="font-medium text-xs sm:text-sm text-white">
-          ${((marketData.total_volume_usd / 1e9).toFixed(2))}B
-        </span>
-      </div>
-    ) : (
-      <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
-        <div className="w-16 h-4 bg-gray-600 animate-pulse rounded-md" />
-        <div className="flex items-center gap-1">
-          <div className="w-12 h-6 bg-gray-600 animate-pulse rounded-md" />
-        </div>
-      </div>
-    )}
-  </NeonGradientCard>
-
-  <NeonGradientCard>
-    {marketData ? (
-      <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
-        <span className="text-muted-foreground text-gray-300 text-xs sm:text-sm">
-          Market Cap Percentage (BTC):
-        </span>
-        <span className="font-medium text-xs sm:text-sm text-white">
-          {marketData.market_cap_percentage_btc.toFixed(2)}%
-        </span>
-      </div>
-    ) : (
-      <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
-        <div className="w-16 h-4 bg-gray-600 animate-pulse rounded-md" />
-        <div className="flex items-center gap-1">
-          <div className="w-12 h-6 bg-gray-600 animate-pulse rounded-md" />
-        </div>
-      </div>
-    )}
-  </NeonGradientCard>
-
-  <NeonGradientCard>
-    {marketData ? (
-      <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
-        <span className="text-muted-foreground text-gray-300 text-xs sm:text-sm">
-          Market Cap Percentage (ETH):
-        </span>
-        <span className="font-medium text-xs sm:text-sm text-white">
-          {marketData.market_cap_percentage_eth.toFixed(2)}%
-        </span>
-      </div>
-    ) : (
-      <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
-        <div className="w-16 h-4 bg-gray-600 animate-pulse rounded-md" />
-        <div className="flex items-center gap-1">
-          <div className="w-12 h-6 bg-gray-600 animate-pulse rounded-md" />
-        </div>
-      </div>
-    )}
-  </NeonGradientCard>
-
-  {/* Active Cryptocurrencies Section
+                {/* Active Cryptocurrencies Section
   <NeonGradientCard>
     {marketData ? (
       <div className="flex items-center gap-3 p-3 shadow-md w-full sm:w-24 md:w-32 lg:w-48 xl:w-60">
@@ -413,7 +401,7 @@ export default function Home() {
       </div>
     )}
   </NeonGradientCard> */}
-</div>
+              </div>
 
               <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-blue-400">
                 The Future of Digital Assets
@@ -423,7 +411,7 @@ export default function Home() {
                 insights on the most secure and advanced crypto platform.
               </p>
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-                <Button size="default" className="glow w-full sm:w-auto">
+                <Button size="default" className="w-full sm:w-auto">
                   Get Started{" "}
                   <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                 </Button>
@@ -438,10 +426,6 @@ export default function Home() {
             </div>
 
             <div className="relative order-first sm:order-last" id="hero-img">
-
-  
-
-  
               <div className="absolute inset-0 bg-primary/20 blur-xl sm:w-3/4 md:w-full h-auto object-cover"></div>
               <img
                 id="hero-img"
@@ -535,7 +519,7 @@ export default function Home() {
                       <div className="space-y-2 sm:space-y-3">
                         <div className="flex justify-between items-center">
                           <p className="text-xl sm:text-2xl font-bold">
-                            ${coin.current_price.toLocaleString()}
+                            ${coin.current_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                           </p>
                           <div className="flex flex-col items-end">
                             <p
@@ -701,7 +685,6 @@ export default function Home() {
                 </li>
               </ul>
             </div>
-          
           </div>
           <div className="border-t border-secondary mt-8 pt-8 text-center text-muted-foreground">
             <p>&copy; 2025 CryptoWatch. All rights reserved.</p>

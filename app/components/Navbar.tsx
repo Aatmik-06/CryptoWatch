@@ -25,7 +25,7 @@ const menus = [
   {
     id: 2,
     title: 'Coins',
-    url: '/',
+    url: '/coin',
     dropdown: false
   },
   {

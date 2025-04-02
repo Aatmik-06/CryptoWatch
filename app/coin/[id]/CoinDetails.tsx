@@ -174,7 +174,7 @@ export default function CoinDetails({ id }: { id: string }) {
       } catch (error) {
         if (isMounted) {
           console.error('Error fetching coin data:', error);
-          setError('Failed to load coin data. Please try again later.');
+          setError('Failed to load coin data. Please try again after 60 seconds.');
           setLoading(false);
         }
       }
@@ -230,7 +230,9 @@ export default function CoinDetails({ id }: { id: string }) {
             </div>
             <div style={{marginLeft:"40px"}}>
                 <p className="text-xs sm:text-sm text-muted-foreground">Current Price</p>
-                <p className="text-base sm:text-lg font-bold">${coinData.market_data.current_price.usd.toLocaleString()}</p>
+
+                
+                <p className="text-base sm:text-lg font-bold"> ${coinData.market_data.current_price.usd.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} </p>
               </div>
           </div>
           <div className="flex gap-1 w-full sm:w-auto">
@@ -502,7 +504,10 @@ export default function CoinDetails({ id }: { id: string }) {
               <p className="text-xs sm:text-sm text-muted-foreground">Code Changes (4 weeks)</p>
               <div className="flex gap-2">
                 <div>
-                  <p className="text-xs sm:text-sm text-green-500">+{coinData.developer_data.code_additions_deletions_4_weeks.additions.toLocaleString()}</p>
+                  
+                  <p className="text-xs sm:text-sm text-green-500">+{coinData.developer_data?.code_additions_deletions_4_weeks?.additions?.toLocaleString() || '0'}</p>
+                  <p className="text-xs sm:text-sm text-red-500">-{coinData.developer_data?.code_additions_deletions_4_weeks?.deletions?.toLocaleString() || '0'}</p>
+                 
                 </div>
                 <div>
                   <p className="text-xs sm:text-sm text-red-500">-{coinData.developer_data.code_additions_deletions_4_weeks.deletions.toLocaleString()}</p>
