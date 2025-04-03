@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Search, TrendingUp, Newspaper, ArrowRight } from "lucide-react";
+import { Search, TrendingUp, Newspaper, ArrowRight, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -122,6 +122,15 @@ export default function Home() {
     console.log(`Navigating to coin: ${coinId}`);
   };
 
+  
+  const scrollbtn = ()=>{
+   
+    const position = window.scrollY + 700;
+    window.scrollTo({ top: position, behavior: 'smooth' });
+ 
+ 
+}
+
   useEffect(() => {
     let isMounted = true;
 
@@ -227,6 +236,8 @@ export default function Home() {
     fetchMarketData();
     const interval = setInterval(fetchMarketData, 60000);
 
+
+
     return () => clearInterval(interval);
   }, []);
 
@@ -281,6 +292,8 @@ export default function Home() {
       </div>
       <MarqueeBar />
 
+
+
       <div className="relative overflow-hidden">
         <div className="hero-grid absolute inset-0 opacity-10"></div>
 
@@ -289,7 +302,9 @@ export default function Home() {
             id="hero-div"
             className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-12"
           >
+            
             <div className="space-y-4 sm:space-y-8 px-4 sm:px-6">
+
               <div
                 id="marketdesktopdiv"
                 className="flex flex-wrap justify-items-end gap-4 text-xs sm:text-sm p-4 rounded-lg shadow-lg"
@@ -410,15 +425,27 @@ export default function Home() {
                 Track real-time cryptocurrency prices, market trends, and
                 insights on the most secure and advanced crypto platform.
               </p>
-              <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
-                <Button size="default" className="w-full sm:w-auto">
-                  Get Started{" "}
-                  <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
-                </Button>
-                <Button
-                  size="default"
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-4" >
+                
+
+              
+
+              <Button className="group relative overflow-hidden" size="lg" id="b1" onClick={scrollbtn}>
+  <span className="mr-4 text-base transition-opacity duration-500 group-hover:opacity-0" >
+    Get Started
+  </span>
+  <i id="chev" className="absolute right-1 top-1 bottom-1 rounded-sm z-10 grid w-1/4 place-items-center transition-all duration-500 bg-primary-foreground/15 group-hover:w-[calc(100%-0.5rem)] group-active:scale-95 text-black-500">
+    <ChevronRight size={20} strokeWidth={2} aria-hidden="true" />
+  </i>
+</Button>
+
+
+
+    
+                <Button 
+                  size="lg"
                   variant="secondary"
-                  className="w-full sm:w-auto"
+                  className="w-full text-base sm:w-auto"
                 >
                   Learn More
                 </Button>

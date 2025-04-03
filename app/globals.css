@@ -182,6 +182,17 @@
   }
 }
 
+
+
+#b1:hover{
+  background-color: rgb(30,41,59);
+  color: white;
+}
+
+#hero-img{
+  height: 550px; 
+ }
+ 
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
@@ -230,6 +241,9 @@
 }
 @media screen and (max-width:640px)
 {
+  #chev{
+    display: none;
+  }
   #hero-div{
     display:flex;
     flex-direction: row;

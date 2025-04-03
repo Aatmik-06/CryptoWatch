@@ -510,7 +510,7 @@ export default function CoinDetails({ id }: { id: string }) {
                  
                 </div>
                 <div>
-                  <p className="text-xs sm:text-sm text-red-500">-{coinData.developer_data.code_additions_deletions_4_weeks.deletions.toLocaleString()}</p>
+                  <p className="text-xs sm:text-sm text-red-500">-{coinData.developer_data.code_additions_deletions_4_weeks.deletions?.toLocaleString() || '0'}</p>
                 </div>
               </div>
             </div>
