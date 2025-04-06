@@ -86,7 +86,7 @@ const Menu = ({ list }: MenuProps) => {
           <li className="relative">
             <Link
               className="relative flex items-center justify-center rounded px-8 py-3 transition-all hover:bg-foreground/10"
-              href="/"
+              href="/nfts"
             >
               NFT's
             </Link>
@@ -133,7 +133,7 @@ const Menu = ({ list }: MenuProps) => {
           <li className="relative">
             <Link
               className="relative flex items-center justify-center rounded px-8 py-3 transition-all hover:bg-foreground/10"
-              href="/"
+                href="/nfts"
             >
               NFT's
             </Link>

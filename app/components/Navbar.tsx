@@ -31,7 +31,7 @@ const menus = [
   {
     id: 3,
     title: "NFT's",
-    url: '/',
+    url: 'nfts',
     dropdown: false
   },
   {
