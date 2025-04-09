@@ -222,7 +222,9 @@
   display: none;
 }
 }
-
+#off-canvas{
+  z-index: 40;
+}
 @media screen and (max-width:1024px)
 {
 

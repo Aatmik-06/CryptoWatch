@@ -49,12 +49,12 @@ const Menu = ({ list }: MenuProps) => {
             
           </button>
         </div>
-        <div 
+        <div id='off-canvas'
           className={`lg:hidden fixed inset-0 ${
             isSidebarOpen ? 'block' : 'hidden'
           }`}
           onClick={() => setSidebarOpen(false)}
-          style={{ zIndex: 40 }}
+          
         ></div>
         {/* Sidebar for mobile */}
         <div 
