@@ -49,7 +49,13 @@ const Menu = ({ list }: MenuProps) => {
             
           </button>
         </div>
-
+        <div 
+          className={`lg:hidden fixed inset-0 ${
+            isSidebarOpen ? 'block' : 'hidden'
+          }`}
+          onClick={() => setSidebarOpen(false)}
+          style={{ zIndex: 40 }}
+        ></div>
         {/* Sidebar for mobile */}
         <div 
           className={`lg:hidden fixed inset-0 bg-black-500 bg-opacity-10 transition-all ${
