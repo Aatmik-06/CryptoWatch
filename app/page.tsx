@@ -16,7 +16,7 @@ import { Meteors } from "@/components/ui/meteors";
 import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
 import MarqueeBar from "./components/MarqueeBar";
 
-interface Coin {
+export interface Coin {
   id: string;
   symbol: string;
   name: string;
