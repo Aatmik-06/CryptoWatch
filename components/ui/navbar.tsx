@@ -89,14 +89,7 @@ const Menu = ({ list }: MenuProps) => {
               Coins
             </Link>
           </li>
-          <li className="relative">
-            <Link
-              className="relative flex items-center justify-center rounded px-8 py-3 transition-all hover:bg-foreground/10"
-              href="/"
-            >
-              NFT's
-            </Link>
-          </li>
+         
           <li className="relative">
             <Link
               className="relative flex items-center justify-center rounded px-8 py-3 transition-all hover:bg-foreground/10"
