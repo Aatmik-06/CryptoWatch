@@ -1,20 +1,123 @@
 "use client"
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import { motion } from "framer-motion";
 import { CryptoTicker } from "../components1/layout/crypto-ticker";
 import { CalculatorForm, type ResultType } from "./calculator-form";
 import { ResultsDisplay } from "./results-display";
+import Marquee from "react-fast-marquee";
+import MarqueeBar from "../components/MarqueeBar";
+import { Search, TrendingUp, Newspaper, ArrowRight, ChevronRight } from "lucide-react";
+import axios from "axios";
+import { Coin } from "../page";
 
 export default function Calculator() {
+
+    const [coins, setCoins] = useState<Coin[]>([]);   
+    const [error, setError] = useState<string | null>(null);
+    const [loading, setLoading] = useState(true);  
+ useEffect(() => {
+   let isMounted = true;
+
+   const fetchCoins = async () => {
+     const options = {
+       method: "GET",
+       url: "https://api.coingecko.com/api/v3/coins/markets",
+       params: {
+         vs_currency: "usd",
+         order: "market_cap_desc",
+         per_page: 100,
+         sparkline: false,
+         price_change_percentage: "24h,7d",
+       },
+       headers: {
+         accept: "application/json",
+         "x-cg-demo-api-key": "CG-kn4mzED9f94TGtdGsPf3sZrd",
+       },
+     };
+
+     axios
+       .request(options)
+       .then((res) => {
+         if (isMounted) {
+           setCoins(res.data);
+           setError(null);
+           setLoading(false);
+         }
+       })
+       .catch((err) => {
+         if (isMounted) {
+           console.error("Error fetching coins:", err);
+           setError(
+             "Failed to load cryptocurrency data. Please try again later."
+           );
+           setLoading(false);
+         }
+       });
+   };
+
+   fetchCoins();
+   const interval = setInterval(fetchCoins, 10000);
+
+   return () => {
+     isMounted = false;
+     clearInterval(interval);
+   };
+ }, []);
+
+
+
   const [results, setResults] = useState<ResultType | null>(null);
 
   const handleCalculation = (calculatedResults: ResultType) => {
     setResults(calculatedResults);
   };
-
   return (
     <div className="bg-black text-white">
-      <CryptoTicker />
+        <Marquee
+          direction="left"
+          speed={120}
+          className="bg-black-500 text-white py-2"
+        >
+         
+            {coins.slice(0, 8).map((coin) => (
+              <div key={coin.id} className="flex items-center gap-1">
+                <img
+                  src={coin.image}
+                  alt={coin.name}
+                  className="w-6 h-6 sm:w-8 sm:h-8 md:w-8 md:h-8 lg:w-10 lg:h-10 rounded-full"
+
+                  // className="w-6 h-6 sm:w-8 sm:h-8 rounded-full"
+                />
+                <div className="flex items-center gap-0">
+                  <span className="text-sm sm:text-base font-medium gap-0 sm:block hidden">
+                    {coin.name}
+                  </span>
+                  <span className="text-xs font-medium gap-0 block sm:hidden">
+                    {coin.name}
+                  </span>
+                  <div className="flex items-center gap-0 ml-1 mr-6">
+                    {coin.price_change_percentage_24h > 0 ? (
+                      <ArrowRight className="w-4 h-4 text-green-500 rotate-45" />
+                    ) : (
+                      <ArrowRight className="w-4 h-4 text-red-500 rotate-[135deg]" />
+                    )}
+                    <span
+                      className={`text-sm ${
+                        coin.price_change_percentage_24h > 0
+                          ? "text-green-500"
+                          : "text-red-500"
+                      }`}
+                    >
+                      {coin.price_change_percentage_24h.toFixed(2)}%
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          
+        </Marquee>
+       {/* </div> */}
+       <MarqueeBar />
       
       {/* Hero Section */}
       <section className="py-16 md:py-20 relative overflow-hidden">
@@ -87,6 +190,83 @@ export default function Calculator() {
           </div>
         </div>
       </section>
+
+       {/* Footer */}
+       <footer className="bg-secondary/30 py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-20">
+            <div>
+              <h3 className="text-xl font-bold text-primary mb-4">
+                CryptoWatch
+              </h3>
+              <p className="text-muted-foreground">
+                Your trusted source for cryptocurrency market data and insights.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Quick Links</h4>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="#"
+                    className="text-muted-foreground hover:text-primary"
+                  >
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-muted-foreground hover:text-primary"
+                  >
+                    Features
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-muted-foreground hover:text-primary"
+                  >
+                    Blog
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Resources</h4>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="#"
+                    className="text-muted-foreground hover:text-primary"
+                  >
+                    Help Center
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-muted-foreground hover:text-primary"
+                  >
+                    API Documentation
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    className="text-muted-foreground hover:text-primary"
+                  >
+                    Market Data
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-secondary mt-8 pt-8 text-center text-muted-foreground">
+            <p>&copy; 2025 CryptoWatch. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
