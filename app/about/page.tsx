@@ -78,13 +78,13 @@ export default function About() {
   }, []);
 
   return (
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col ">
         <Marquee
           direction="left"
           speed={120}
           className="bg-black-500 text-white py-2"
         >
-          <div className="flex gap-8">
+         
             {coins.slice(0, 8).map((coin) => (
               <div key={coin.id} className="flex items-center gap-1">
                 <img
@@ -120,7 +120,7 @@ export default function About() {
                 </div>
               </div>
             ))}
-          </div>
+          
         </Marquee>
        {/* </div> */}
        <MarqueeBar />
