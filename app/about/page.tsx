@@ -9,8 +9,6 @@ import { useState,useEffect } from "react";
 import { Coin } from "../page";
 import Marquee from "react-fast-marquee";
 import MarqueeBar from "../components/MarqueeBar";
-
-
 import { Search, TrendingUp, Newspaper, ArrowRight, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
