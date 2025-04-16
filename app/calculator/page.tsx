@@ -64,6 +64,11 @@ export default function Calculator() {
    };
  }, []);
 
+ const scrollbtn = ()=>{
+   
+  const position = window.scrollY + 700;
+  window.scrollTo({ top: position, behavior: 'smooth' });
+}
 
 
   const [results, setResults] = useState<ResultType | null>(null);
@@ -259,6 +264,7 @@ export default function Calculator() {
                     Market Data
                   </a>
                 </li>
+                
               </ul>
             </div>
           </div>

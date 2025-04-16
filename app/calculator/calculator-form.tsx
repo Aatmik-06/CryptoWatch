@@ -47,6 +47,11 @@ export function CalculatorForm({ onCalculate }: CalculatorFormProps) {
       compoundingFrequency: "annually",
     },
   });
+  const scrollbtn = ()=>{
+   
+    const position = window.scrollY + 600;
+    window.scrollTo({ top: position, behavior: 'smooth' });
+  }
 
   const calculateReturn = (data: FormValues) => {
     const { principal, interestRate, time, compoundingFrequency } = data;
@@ -200,7 +205,7 @@ export function CalculatorForm({ onCalculate }: CalculatorFormProps) {
               )}
             />
             
-            <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
+            <Button type="submit" onClick={scrollbtn} className="w-full bg-blue-600 hover:bg-blue-700">
               Calculate Return
             </Button>
           </form>

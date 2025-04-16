@@ -77,6 +77,12 @@ export default function About() {
     };
   }, []);
 
+  const scrollbtn = ()=>{
+   
+    const position = window.scrollY + 700;
+    window.scrollTo({ top: position, behavior: 'smooth' });
+  }
+
   return (
       <div className="flex flex-col ">
         <Marquee
