@@ -48,9 +48,12 @@ export function CalculatorForm({ onCalculate }: CalculatorFormProps) {
     },
   });
   const scrollbtn = ()=>{
+    if (window.innerWidth <= 768) {
+      const position = window.scrollY + 600;
+      window.scrollTo({ top: position, behavior: 'smooth' });
+    }
    
-    const position = window.scrollY + 600;
-    window.scrollTo({ top: position, behavior: 'smooth' });
+   
   }
 
   const calculateReturn = (data: FormValues) => {
