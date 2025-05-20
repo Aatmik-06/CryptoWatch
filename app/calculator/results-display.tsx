@@ -39,6 +39,7 @@ export function ResultsDisplay({ results }: ResultsDisplayProps) {
                   </thead>
                   <tbody className="divide-y divide-gray-800">
                     {results.breakdown.map((item) => (
+                      
                       <tr key={item.year} className="bg-gray-900">
                         <td className="py-2 px-4 text-sm text-gray-300">{item.year}</td>
                         <td className="py-2 px-4 text-sm text-green-400">${item.interest.toLocaleString()}</td>

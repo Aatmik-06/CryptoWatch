@@ -493,11 +493,7 @@ export default function Home() {
                   <h2 className="heading-3 ">
                     Today's Cryptocurrency Prices by Market Cap
                   </h2>
-                  {/* <span className="body-text ">The global crypto market cap is</span>
-            <span className="heading-3 text-primary">$2.87T</span>
-            <span className="body-text ">a</span>
-            <span className="text-green-500">0.88%</span>
-            <span className="body-text ">increase over the last day.</span> */}
+                
                 </div>
               </div>
             </div>
