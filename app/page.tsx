@@ -14,11 +14,7 @@ import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
-import { MarqueeAnimation } from "@/components/ui/marquee-effect";
-import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import Marquee from "react-fast-marquee";
-import { ArrowUpRight, ArrowDownRight } from "lucide-react";
-import { Meteors } from "@/components/ui/meteors";
 import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
 import MarqueeBar from "./components/MarqueeBar";
 

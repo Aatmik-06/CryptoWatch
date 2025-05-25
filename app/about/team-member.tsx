@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Twitter, Linkedin, Github } from "lucide-react";
+import { Linkedin} from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 interface TeamMemberProps {

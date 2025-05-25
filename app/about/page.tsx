@@ -1,6 +1,5 @@
 "use client"
 import { motion } from "framer-motion";
-import { CryptoTicker } from "../components1/layout/crypto-ticker";
 import { Timeline } from "../components1/about/timeline";
 import { TeamMember } from "../components1/about/team-member";
 import { timelineItems, teamMembers } from "../lib1/constants";
@@ -9,19 +8,8 @@ import { useState,useEffect } from "react";
 import { Coin } from "../page";
 import Marquee from "react-fast-marquee";
 import MarqueeBar from "../components/MarqueeBar";
-import { Search, TrendingUp, Newspaper, ArrowRight, ChevronRight } from "lucide-react";
-import Link from "next/link";
-import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
-import { Skeleton } from "@/components/ui/skeleton";
-import { Button } from "@/components/ui/button";
+import { ArrowRight} from "lucide-react";
 import axios from "axios";
-import { MarqueeAnimation } from "@/components/ui/marquee-effect";
-import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
-
-import { ArrowUpRight, ArrowDownRight } from "lucide-react";
-import { Meteors } from "@/components/ui/meteors";
-import { NeonGradientCard } from "@/components/ui/neon-gradient-card";
 
 
 export default function About() {

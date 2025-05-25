@@ -1,7 +1,6 @@
 "use client"
 import { useState , useEffect} from "react";
 import { motion } from "framer-motion";
-import { CryptoTicker } from "../components1/layout/crypto-ticker";
 import { CalculatorForm, type ResultType } from "./calculator-form";
 import { ResultsDisplay } from "./results-display";
 import Marquee from "react-fast-marquee";
