@@ -120,7 +120,6 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
 
   const handleCoinClick = (coinId: string) => {
-    // You can add any additional logic here before navigation
     console.log(`Navigating to coin: ${coinId}`);
   };
 

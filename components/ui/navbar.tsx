@@ -64,103 +64,129 @@ const Menu = ({ list }: MenuProps) => {
           onClick={toggleSidebar}
         ></div>
 
-        <div id='sidebar'
-          className={`lg:hidden fixed top-0 left-0 w-64 h-full bg-black text-white transition-transform transform ${
+        <div
+          id="sidebar"
+          className={`lg:hidden fixed top-0 left-0 w-72 h-full bg-gradient-to-b from-black via-gray-900 to-black text-white shadow-2xl transition-transform transform ${
             isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-          } z-50`} 
+          } z-50 flex flex-col`}
         >
-          <ul className="flex flex-col items-start p-4">
-          <h1 id="nav-h1" className='flex flex-row mb-2'> <img className='mr-2' src={img.src} alt="" style={{height:"35px" }}/> <span className='mt-1'> CryptoWatch </span> </h1>
-
-          <li className="relative">
-            <Link
-              className="relative flex items-center justify-center rounded px-8 py-3 transition-all hover:bg-foreground/10"
-              href="/"
+          <div className="flex items-center justify-between px-6 py-4 border-b border-gray-800">
+            <div className="flex items-center">
+              <img className="mr-3 rounded shadow-lg" src={img.src} alt="" style={{ height: '38px' }} />
+              <span className="text-xl font-bold tracking-wide">CryptoWatch</span>
+            </div>
+            <button
+              className="text-gray-400 hover:text-primary text-2xl focus:outline-none"
+              onClick={toggleSidebar}
+              aria-label="Close sidebar"
             >
-              Home
-            </Link>
-          </li>
-          <li className="relative">
-            <Link
-              className="relative flex items-center justify-center rounded px-8 py-3 transition-all hover:bg-foreground/10"
-              href="/"
-              onClick={scrollto}
-            >
-              Coins
-            </Link>
-          </li>
-          <li className="relative">
-            <Link
-              className="relative flex items-center justify-center rounded px-8 py-3 transition-all hover:bg-foreground/10"
-              href="/calculator"
-            >
-              Profit Calculator
-            </Link>
-          </li>
-          <li className="relative">
-            <Link
-              className="relative flex items-center justify-center rounded px-8 py-3 transition-all hover:bg-foreground/10"
-              href="/about"
-            >
-              About Us
-            </Link>
-          </li>
-          <li className="relative">
-            <Link
-              className="relative flex items-center justify-center rounded px-8 py-3 transition-all hover:bg-foreground/10"
-              href="/"
-            >
-              Contact
-            </Link>
-          </li>
+              &times;
+            </button>
+          </div>
+          <ul className="flex flex-col gap-2 px-4 py-6">
+            <li className="w-full">
+              <Link
+          className="flex items-center gap-3 rounded-lg px-5 py-3 w-full transition-all bg-gradient-to-r from-black via-gray-900 to-black hover:from-primary/80 hover:to-primary/60 hover:text-white shadow hover:shadow-lg"
+          href="/"
+          onClick={toggleSidebar}
+              >
+          <span className="material-icons text-lg">Home</span>
+              </Link>
+            </li>
+            <li className="w-full">
+              <Link
+          className="flex items-center gap-3 rounded-lg px-5 py-3 w-full transition-all bg-gradient-to-r from-black via-gray-900 to-black hover:from-primary/80 hover:to-primary/60 hover:text-white shadow hover:shadow-lg"
+          href="/"
+          onClick={e => {
+            toggleSidebar();
+            scrollto();
+          }}
+              >
+          <span className="material-icons text-lg">Coins</span>
+          
+              </Link>
+            </li>
+            <li className="w-full">
+              <Link
+          className="flex items-center gap-3 rounded-lg px-5 py-3 w-full transition-all bg-gradient-to-r from-black via-gray-900 to-black hover:from-primary/80 hover:to-primary/60 hover:text-white shadow hover:shadow-lg"
+          href="/calculator"
+          onClick={toggleSidebar}
+              >
+          <span className="material-icons text-lg">Profit Calculator</span>
+          
+              </Link>
+            </li>
+            <li className="w-full">
+              <Link
+          className="flex items-center gap-3 rounded-lg px-5 py-3 w-full transition-all bg-gradient-to-r from-black via-gray-900 to-black hover:from-primary/80 hover:to-primary/60 hover:text-white shadow hover:shadow-lg"
+          href="/about"
+          onClick={toggleSidebar}
+              >
+          <span className="material-icons text-lg">About Us</span>
+          
+              </Link>
+            </li>
+            <li className="w-full">
+              <Link
+          className="flex items-center gap-3 rounded-lg px-5 py-3 w-full transition-all bg-gradient-to-r from-black via-gray-900 to-black hover:from-primary/80 hover:to-primary/60 hover:text-white shadow hover:shadow-lg"
+          href="/"
+          onClick={toggleSidebar}
+              >
+          <span className="material-icons text-lg">Contact</span>
+          
+              </Link>
+            </li>
           </ul>
+          <div className="mt-auto px-6 pb-6 text-xs text-gray-500">
+            &copy; {new Date().getFullYear()} CryptoWatch. All rights reserved.
+          </div>
         </div>
 
         {/* Desktop menu */}
-        <ul className="hidden lg:flex items-center">
-        <img src={img.src} alt="" style={{height:"35px" ,marginLeft:"20px"}}/> <h1 id="nav-h1">  CryptoWatch</h1>
-          <li className="relative">
+        <ul className="hidden lg:flex items-center bg-black/95 rounded-b-xl shadow-lg px-4 py-2">
+          <img src={img.src} alt="" style={{height:"35px" ,marginLeft:"20px"}}/> 
+          <h1 id="nav-h1" className="text-white ml-2 mr-6 font-bold text-lg">CryptoWatch</h1>
+          <li className="relative group">
             <Link
-              className="relative flex items-center justify-center rounded px-8 py-3 transition-all hover:bg-foreground/10"
+              className="relative flex items-center justify-center rounded px-8 py-3 transition-all text-white hover:bg-primary/20 hover:text-primary"
               href="/"
             >
               Home
             </Link>
           </li>
-          <li className="relative">
+          <li className="relative group">
             <Link
-              className="relative flex items-center justify-center rounded px-8 py-3 transition-all hover:bg-foreground/10"
+              className="relative flex items-center justify-center rounded px-8 py-3 transition-all text-white hover:bg-primary/20 hover:text-primary"
               href="/"
               onClick={scrollto}
             >
               Coins
             </Link>
           </li>
-          <li className="relative">
-          <Link
-              className="relative flex items-center justify-center rounded px-8 py-3 transition-all hover:bg-foreground/10"
+          <li className="relative group">
+            <Link
+              className="relative flex items-center justify-center rounded px-8 py-3 transition-all text-white hover:bg-primary/20 hover:text-primary"
               href="/calculator"
             >
               Profit Calculator
             </Link>
           </li>
-          <li className="relative">
+          <li className="relative group">
             <Link
-              className="relative flex items-center justify-center rounded px-8 py-3 transition-all hover:bg-foreground/10"
+              className="relative flex items-center justify-center rounded px-8 py-3 transition-all text-white hover:bg-primary/20 hover:text-primary"
               href="/about"
             >
               About Us
             </Link>
           </li>
-          <li className="relative">
+          <li className="relative group">
             <Link
-              className="relative flex items-center justify-center rounded px-8 py-3 transition-all hover:bg-foreground/10"
+              className="relative flex items-center justify-center rounded px-8 py-3 transition-all text-white hover:bg-primary/20 hover:text-primary"
               href="/"
             >
               Contact
             </Link>
           </li>
-        
         </ul>
       </nav>
     </MotionConfig>
