@@ -45,8 +45,11 @@ const Menu = ({ list }: MenuProps) => {
             onClick={toggleSidebar}
           >
               
-            ☰
-            
+      <div className="flex flex-col items-start justify-center space-y-1">
+      <span className="h-[2px] w-6 bg-white"></span>             {/* Top bar */}
+      <span className="h-[2px] w-5 bg-white ml-1"></span>        {/* Middle bar, shifted right */}
+      <span className="h-[2px] w-6 bg-white"></span>             {/* Bottom bar */}
+    </div>
           </button>
         </div>
         <div id='off-canvas'
