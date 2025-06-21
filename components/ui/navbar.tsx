@@ -70,9 +70,9 @@ const Menu = ({ list }: MenuProps) => {
             isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
           } z-50 flex flex-col`}
         >
-          <div className="flex items-center justify-between px-6 py-4 border-b border-gray-800">
+          <div className="flex items-center justify-between px-6 py-3 ">
             <div className="flex items-center">
-              <img className="mr-3 rounded shadow-lg" src={img.src} alt="" style={{ height: '38px' }} />
+              <img className="mr-3 rounded shadow-lg" src={img.src} alt="" style={{ height: '32px' }} />
               <span className="text-xl font-bold tracking-wide">CryptoWatch</span>
             </div>
             <button
@@ -80,7 +80,6 @@ const Menu = ({ list }: MenuProps) => {
               onClick={toggleSidebar}
               aria-label="Close sidebar"
             >
-              &times;
             </button>
           </div>
           <ul className="flex flex-col gap-2 px-4 py-6">
